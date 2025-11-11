@@ -87,6 +87,12 @@ def main(args):
     if args.dataset == 'ili':
         len_val = 97
         len_test = 193
+    if args.dataset == 'wind-power-generation':
+        len_val = 4380
+        len_test = 8759
+    if args.dataset == 'air-quality':
+        len_val = 936
+        len_test = 1870
 
     space = get_experiment_space(args)
 
