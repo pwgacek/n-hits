@@ -63,7 +63,7 @@ def get_experiment_space(args):
 def main(args):
 
     #----------------------------------------------- Load Data -----------------------------------------------#
-    Y_df = pd.read_csv(f'./data/{args.dataset}/M/df_y.csv')
+    Y_df = pd.read_csv(f'./data/{args.dataset}/df_y.csv')
 
     X_df = None
     S_df = None
@@ -121,6 +121,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument('--hyperopt_max_evals', type=int, help='hyperopt_max_evals')
     parser.add_argument('--experiment_id', default=None, required=False, type=str, help='string to identify experiment')
+    parser.add_argument('--dataset', type=str, help='Name of the dataset', required=False)
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -132,7 +133,8 @@ if __name__ == '__main__':
 
     horizons = [96, 192, 336, 720]
     ILI_horizons = [24, 36, 48, 60]
-    datasets = ['ETTm2', 'Exchange', 'weather', 'ili', 'ECL', 'traffic']
+
+    datasets = ['ETTm2', 'Exchange', 'weather', 'ili', 'ECL', 'traffic'] if args.dataset is None else [args.dataset]
 
     for dataset in datasets:
         # Horizon

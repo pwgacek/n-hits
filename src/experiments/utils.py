@@ -221,18 +221,21 @@ def instantiate_loaders(mc, train_dataset, val_dataset, test_dataset):
                                         batch_size=int(mc['batch_size']),
                                         n_windows=int(mc['n_windows']),
                                         eq_batch_size=False,
-                                        shuffle=True)
+                                        shuffle=True,
+                                        num_workers=8)
         if val_dataset is not None:
             val_loader = TimeSeriesLoader(dataset=val_dataset,
                                         batch_size=1,
-                                        shuffle=False)
+                                        shuffle=False,
+                                        num_workers=8)
         else:
             val_loader = None
 
         if test_dataset is not None:
             test_loader = TimeSeriesLoader(dataset=test_dataset,
                                         batch_size=1,
-                                        shuffle=False)
+                                        shuffle=False,
+                                        num_workers=8)
         else:
             test_loader = None
 
@@ -469,10 +472,9 @@ def model_fit_predict(mc, S_df, Y_df, X_df, f_cols, evaluate_train, ds_in_val, d
     trainer = pl.Trainer(max_epochs=mc['max_epochs'],
                          max_steps=mc['max_steps'],
                          check_val_every_n_epoch=mc['eval_freq'],
-                         progress_bar_refresh_rate=1,
                          gpus=gpus,
                          callbacks=callbacks,
-                         checkpoint_callback=False,
+                         enable_checkpointing=False,
                          logger=False)
     trainer.fit(model, train_loader, val_loader)
 
