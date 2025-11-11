@@ -128,6 +128,7 @@ def parse_args():
     parser.add_argument('--hyperopt_max_evals', type=int, help='hyperopt_max_evals')
     parser.add_argument('--experiment_id', default=None, required=False, type=str, help='string to identify experiment')
     parser.add_argument('--dataset', type=str, help='Name of the dataset', required=False)
+    parser.add_argument('--horizon', type=int, help='Horizon', required=False, default=None)
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -137,8 +138,8 @@ if __name__ == '__main__':
     if args is None:
         exit()
 
-    horizons = [96, 192, 336, 720]
-    ILI_horizons = [24, 36, 48, 60]
+    horizons = [96, 192, 336, 720] if args.horizon is None else [args.horizon]
+    ILI_horizons = [24, 36, 48, 60] if args.horizon is None else [args.horizon]
 
     datasets = ['ETTm2', 'Exchange', 'weather', 'ili', 'ECL', 'traffic'] if args.dataset is None else [args.dataset]
 
