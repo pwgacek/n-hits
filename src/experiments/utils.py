@@ -221,21 +221,18 @@ def instantiate_loaders(mc, train_dataset, val_dataset, test_dataset):
                                         batch_size=int(mc['batch_size']),
                                         n_windows=int(mc['n_windows']),
                                         eq_batch_size=False,
-                                        shuffle=True,
-                                        num_workers=8)
+                                        shuffle=True)
         if val_dataset is not None:
             val_loader = TimeSeriesLoader(dataset=val_dataset,
                                         batch_size=1,
-                                        shuffle=False,
-                                        num_workers=8)
+                                        shuffle=False)
         else:
             val_loader = None
 
         if test_dataset is not None:
             test_loader = TimeSeriesLoader(dataset=test_dataset,
                                         batch_size=1,
-                                        shuffle=False,
-                                        num_workers=8)
+                                        shuffle=False)
         else:
             test_loader = None
 
