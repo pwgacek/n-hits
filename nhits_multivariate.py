@@ -93,6 +93,9 @@ def main(args):
     if args.dataset == 'air-quality':
         len_val = 936
         len_test = 1870
+    if args.dataset == 'microsoft-stock':
+        len_val = 908
+        len_test = 1816
 
     space = get_experiment_space(args)
 
