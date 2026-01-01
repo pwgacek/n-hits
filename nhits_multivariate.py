@@ -100,11 +100,11 @@ def main(args):
         len_val = 3458
         len_test = 6917
     if args.dataset == 'QPS_clean':
-        len_val = 3023
-        len_test = 6047
+        len_val = 3024
+        len_test = 6048
     if args.dataset == 'sales_clean':
-        len_val = 5052
-        len_test = 10105
+        len_val = 5053
+        len_test = 10106
 
 
     space = get_experiment_space(args)
