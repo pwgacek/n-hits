@@ -90,15 +90,22 @@ def main(args):
     if args.dataset == 'wind-power-generation':
         len_val = 4380
         len_test = 8759
-    if args.dataset == 'air-quality':
-        len_val = 936
-        len_test = 1870
     if args.dataset == 'microsoft-stock':
         len_val = 908
         len_test = 1816
     if args.dataset == 'air-pollution':
         len_val = 2097
         len_test = 4194
+    if args.dataset == 'household_power_consumption_hourly_clean':
+        len_val = 3458
+        len_test = 6917
+    if args.dataset == 'QPS_clean':
+        len_val = 3023
+        len_test = 6047
+    if args.dataset == 'sales_clean':
+        len_val = 5052
+        len_test = 10105
+
 
     space = get_experiment_space(args)
 
